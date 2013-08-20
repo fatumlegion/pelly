@@ -1,6 +1,6 @@
 Pelly
 =============
-* Requires newest SFML ([http://sfml-dev.org](from http://sfml-dev.org/))
+* Requires newest SFML from ([http://sfml-dev.org](http://sfml-dev.org/))
 
 Compiling on GNU/Linux or Mac OS X
 -------------
