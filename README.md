@@ -1,4 +1,4 @@
-Compiling and Running on GNU/Linux or Mac OS X
+Compiling and Running on GNU/Linux or Mac
 -------------
 ```
 $ cmake .
@@ -7,7 +7,7 @@ $ ./pelly
 ```
 
 Compiling and Running on Windows
-=============
+-------------
 Requires CMake and MinGW
 ```
 > cmake -G "MinGW Makefiles" .
