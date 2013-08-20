@@ -15,7 +15,7 @@ private:
 	sf::RenderWindow rwin;
 	bool fullscreen;
 	
-	float doForceFPS;
+	bool doForceFPS, enableVSync;
 	int forceFPS;
 	
 	float dt, timeNow, timeFrame, timeActual, accumulator;

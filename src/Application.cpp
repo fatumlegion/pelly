@@ -26,6 +26,7 @@ void Application::initialize()
 	timeActual = 0.0f;
 	accumulator = 0.0f;
 	
+	enableVSync = false;
 	doForceFPS = false;
 	forceFPS = 60;
 	
@@ -39,7 +40,7 @@ void Application::pushWorld(GameWorld *world)
 
 bool Application::parseArguments(int argc, char **argv)
 {
-	for (int i = 0; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
 		if ((strcmp(argv[i], "-v") == 0) || (strcmp(argv[i], "--version")) == 0)
 		{
@@ -48,11 +49,18 @@ bool Application::parseArguments(int argc, char **argv)
 			printf("Version: 4.20 blaze it faget\n");
 			return false;
 		}
-		
-		if (strcmp(argv[i], "--force-fps") == 0)
+		else if (strcmp(argv[i], "--force-fps") == 0)
 		{
 			doForceFPS = true;
 			forceFPS = atoi(argv[i + 1]);
+		}
+		else if ((strcmp(argv[i], "-vsync") == 0) || (strcmp(argv[i], "--enable-vsync") == 0))
+		{
+			enableVSync = true;
+		}
+		else
+		{
+			printf("Warning: Unrecognized command line argument \"%s\"\n", argv[i]);
 		}
 	}
 	return true;
@@ -65,6 +73,7 @@ int Application::run(int argc, char **argv)
 	rwin.create(videoMode, "Pelly Version 4.20 - Blaze it Edition", !sf::Style::Resize | sf::Style::Close);
 	
 	if (doForceFPS) rwin.setFramerateLimit(forceFPS);
+	if (enableVSync) rwin.setVerticalSyncEnabled(true);
 	
 	while (rwin.isOpen())
 	{

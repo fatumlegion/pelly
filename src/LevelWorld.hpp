@@ -3,11 +3,15 @@
 #include "GameWorld.hpp"
 #include "AssetContainer.hpp"
 #include "Player.hpp"
+#include "Block.hpp"
+#include <vector>
+
 class LevelWorld : public GameWorld
 {
 private:
 	Player *player;
 	AssetContainer *ac;
+	std::vector<Block> cont_blocks;
 public:
 	LevelWorld();
 	~LevelWorld();
