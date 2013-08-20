@@ -21,5 +21,5 @@ set (pelly_LIBS
 	sfml-system
 )
 
-add_executable(a ${pelly_SRCS})
-target_link_libraries(a ${pelly_LIBS})
+add_executable(pelly ${pelly_SRCS})
+target_link_libraries(pelly ${pelly_LIBS})
