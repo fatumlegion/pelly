@@ -27,7 +27,7 @@ void Application::initialize()
 	accumulator = 0.0f;
 	
 	enableVSync = false;
-	doForceFPS = false;
+	doForceFPS = true;
 	forceFPS = 60;
 	
 	pushWorld(new LevelWorld());
@@ -51,8 +51,16 @@ bool Application::parseArguments(int argc, char **argv)
 		}
 		else if (strcmp(argv[i], "--force-fps") == 0)
 		{
-			doForceFPS = true;
-			forceFPS = atoi(argv[i + 1]);
+			if (strcmp(argv[i + 1], "no") == 0)
+			{
+				printf("Setting doForceFPS to false\n");
+				doForceFPS = false;
+			}
+			else
+			{
+				doForceFPS = true;
+				forceFPS = atoi(argv[i + 1]);
+			}
 		}
 		else if ((strcmp(argv[i], "-vsync") == 0) || (strcmp(argv[i], "--enable-vsync") == 0))
 		{
@@ -60,7 +68,8 @@ bool Application::parseArguments(int argc, char **argv)
 		}
 		else
 		{
-			printf("Warning: Unrecognized command line argument \"%s\"\n", argv[i]);
+			if (argv[i][0] == '-')
+				printf("Warning: Unrecognized command line argument \"%s\"\n", argv[i]);
 		}
 	}
 	return true;

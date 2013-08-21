@@ -6,9 +6,10 @@ class Player
 {
 private:
 	sf::Sprite self;
-	bool right, left, moving, revGrav;
+	bool right, left, moving, canJump, revGrav, canRotate, inRotation;
 	sf::Vector2f pos;
-	float xs, fric, grav;
+	float xs, fric, grav, currentRotation, targetRotation;
+	sf::FloatRect box;
 public:
 	Player(sf::Texture &txtr);
 	~Player();
@@ -17,5 +18,7 @@ public:
 	void update(float dt);
 	
 	void touchBlock(Block &b);
+	
+	sf::Vector2f getPosition() { return self.getPosition(); }
 };
 #endif

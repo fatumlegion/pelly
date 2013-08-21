@@ -3,15 +3,28 @@
 #include "GameWorld.hpp"
 #include "AssetContainer.hpp"
 #include "Player.hpp"
+#include "BlockType.hpp"
 #include "Block.hpp"
-#include <vector>
+#include <map>
+
+struct Spring
+{
+	sf::Sprite sprite;
+};
 
 class LevelWorld : public GameWorld
 {
 private:
 	Player *player;
 	AssetContainer *ac;
-	std::vector<Block> cont_blocks;
+	std::map<int, std::map<int, Block> > cont_blocks;
+	bool blockExists(int x, int y);
+	
+	void addGroundBlock(int x, int y);
+	void addSpringBlock(int x, int y);
+	
+	sf::View vw_main;
+	int xIndex, yIndex;
 public:
 	LevelWorld();
 	~LevelWorld();
